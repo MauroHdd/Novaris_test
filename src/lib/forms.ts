@@ -5,6 +5,9 @@
  * Until VITE_SUPABASE_URL / VITE_SUPABASE_ANON_KEY are configured, submissions are
  * NOT stored anywhere. The UI says so honestly ("preview mode").
  */
+import { backendConnected } from './env'
+
+export { backendConnected }
 
 export type ContactSubmission = {
   firstName: string
@@ -19,7 +22,6 @@ export type ContactSubmission = {
   submittedAt: string
 }
 
-export const backendConnected = Boolean(import.meta.env.VITE_SUPABASE_URL && import.meta.env.VITE_SUPABASE_ANON_KEY)
 
 export async function submitContact(data: ContactSubmission): Promise<{ ok: true; stored: boolean } | { ok: false; error: string }> {
   if (!backendConnected) {

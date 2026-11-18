@@ -10,8 +10,8 @@ The NOVARIS digital headquarters: public website, recruiting portal, NOVARIS Aca
 |---|---|---|
 | 1 | Visual identity + complete homepage | ✅ Done |
 | 2 | About, Services, Contact (+ confirmation), 7 legal placeholder pages | ✅ Done |
-| 3 | Recruiting portal + application system | ⏳ Next |
-| 4 | Employee authentication & accounts (Supabase Auth) | ⏳ |
+| 3 | Careers portal, 3-step application, recruiting dashboard & candidate profiles | ✅ Done |
+| 4 | Employee authentication & accounts (Supabase Auth) | ⏳ Next |
 | 5 | NOVARIS Academy + 9 training modules | ⏳ |
 | 6 | Business management dashboard | ⏳ |
 | 7 | CRM + lead distribution | ⏳ |
@@ -40,6 +40,10 @@ All editable content lives in **`src/content/site.ts`**. Anything marked `[PLACE
 5. **Mission statement** on the About page (marked placeholder).
 6. **Legal documents.** All 7 are clearly marked drafts with section headings only. Counsel must write them.
 7. **Leadership bios** (optional): add them to `about.leadership` in `src/content/pages.ts`. The section stays hidden while empty.
+
+8. **Roles.** In `src/content/careers.ts`, set each role's `arrangements` (W-2, 1099, independent agent), `compensation` and `location` once they're legally confirmed. Until then the site says they're confirmed during hiring.
+
+**Demo mode vs. live.** The preview build runs in *demo mode*: applications are saved only in that browser so the recruiting dashboard can be tried end to end, and the admin area shows a demo banner. On the live site (`npm run build`), the admin area is **locked** until secure sign-in (Stage 4) and the database (Stage 9) are connected. Never set `VITE_DEMO_MODE` on the public site.
 
 **Contact form:** it validates and shows a confirmation, but until Supabase is connected (Stage 9) messages are **not stored or sent**. The confirmation page says so in preview mode.
 
@@ -70,7 +74,13 @@ src/
   content/pages.ts         ← all copy for the pages above
   lib/forms.ts             ← one place where forms connect to the backend (Stage 9)
   components/ui/           ← PageHero, SectionHead, Placeholder, form fields
+  content/careers.ts       ← roles (classification & pay set per role), hiring steps, form options
+  pages/careers/           ← Careers page, ApplyPage (3 steps), SubmittedPage
+  pages/admin/             ← AdminLayout (locked unless demo mode), recruiting dashboard, candidate profile
+  lib/recruiting/          ← types, data store (demo: this browser only), submit
+  lib/env.ts               ← backendConnected / demoMode flags
   pages/ComingSoon.tsx     ← placeholder for routes built in later stages
+supabase/migrations/       ← database schema with Row Level Security (applied in Stage 9)
 ```
 
 ## Design system (summary)

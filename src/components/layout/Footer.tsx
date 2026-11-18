@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { academyLink, brand, footerDisclosure, legalLinks, nav } from '../../content/site'
 import { LogoMark, Wordmark } from '../brand/Logo'
+import { demoMode } from '../../lib/env'
 
 export function Footer() {
   return (
@@ -40,7 +41,10 @@ export function Footer() {
       <div className="hairline" />
       <div className="mx-auto flex max-w-site flex-col justify-between gap-2 px-6 py-6 text-xs text-mist sm:flex-row">
         <span>© {new Date().getFullYear()} NOVARIS. All rights reserved.</span>
-        <span className="font-display text-[9px] tracking-wide2">BUILT FOR EXECUTION</span>
+        <span className="flex items-center gap-4">
+          {demoMode && <Link to="/admin/recruiting" className="rounded-full border border-champagne/40 px-3 py-1 text-[11px] text-champagne-soft hover:bg-champagne/10">Admin dashboard (demo)</Link>}
+          <span className="font-display text-[9px] tracking-wide2">BUILT FOR EXECUTION</span>
+        </span>
       </div>
     </footer>
   )
