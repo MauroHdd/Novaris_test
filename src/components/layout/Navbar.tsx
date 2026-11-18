@@ -21,7 +21,7 @@ export function Navbar() {
   return (
     <header className="fixed inset-x-0 top-0 z-50">
       <div className={`mx-auto mt-3 flex max-w-site items-center justify-between rounded-full px-5 py-3 transition-all duration-500 sm:px-6 ${
-        scrolled ? 'glass bg-onyx/75 mx-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.9)] sm:mx-auto' : 'border border-transparent'
+        scrolled ? 'nav-solid mx-3 shadow-[0_20px_60px_-30px_rgba(0,0,0,0.9)] sm:mx-auto' : 'border border-transparent'
       }`}>
         <Link to="/" className="flex items-center gap-3" aria-label="NOVARIS home">
           <LogoMark size={30} />

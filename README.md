@@ -9,8 +9,8 @@ The NOVARIS digital headquarters: public website, recruiting portal, NOVARIS Aca
 | Stage | Scope | Status |
 |---|---|---|
 | 1 | Visual identity + complete homepage | ✅ Done |
-| 2 | About, Services, Contact, legal placeholder pages | ⏳ Next |
-| 3 | Recruiting portal + application system | ⏳ |
+| 2 | About, Services, Contact (+ confirmation), 7 legal placeholder pages | ✅ Done |
+| 3 | Recruiting portal + application system | ⏳ Next |
 | 4 | Employee authentication & accounts (Supabase Auth) | ⏳ |
 | 5 | NOVARIS Academy + 9 training modules | ⏳ |
 | 6 | Business management dashboard | ⏳ |
@@ -37,6 +37,12 @@ All editable content lives in **`src/content/site.ts`**. Anything marked `[PLACE
 3. **How each service is delivered.** Each service is tagged `direct` (provided by NOVARIS) or `licensed` (through appropriately licensed professionals and partners). Insurance and financial services default to `licensed`. Confirm this is accurate.
 4. **Footer disclosure:** have counsel review the text in `footerDisclosure`.
 
+5. **Mission statement** on the About page (marked placeholder).
+6. **Legal documents.** All 7 are clearly marked drafts with section headings only. Counsel must write them.
+7. **Leadership bios** (optional): add them to `about.leadership` in `src/content/pages.ts`. The section stays hidden while empty.
+
+**Contact form:** it validates and shows a confirmation, but until Supabase is connected (Stage 9) messages are **not stored or sent**. The confirmation page says so in preview mode.
+
 No company history, licenses, partnerships or metrics have been invented. The site shows none until you supply them.
 
 ## Deploy to Vercel
@@ -55,6 +61,15 @@ src/
   components/fx/           ← AuroraField (interactive background), Reveal, TiltCard
   components/layout/       ← IntroSequence, Navbar, Footer, ScrollToTop
   pages/home/              ← Hero + homepage sections
+  pages/AboutPage.tsx      ← mission, values, operating model, divisions, compliance
+  pages/ServicesPage.tsx   ← 5 detailed services with sticky index + delivery labels
+  pages/ContactPage.tsx    ← validated contact form (separate contact & marketing consent)
+  pages/ThankYouPage.tsx   ← confirmation page
+  pages/LegalPage.tsx      ← Privacy, Terms, Cookies, Applicant Privacy, Marketing Consent,
+                             Data Retention, Disclosures (placeholders for counsel)
+  content/pages.ts         ← all copy for the pages above
+  lib/forms.ts             ← one place where forms connect to the backend (Stage 9)
+  components/ui/           ← PageHero, SectionHead, Placeholder, form fields
   pages/ComingSoon.tsx     ← placeholder for routes built in later stages
 ```
 

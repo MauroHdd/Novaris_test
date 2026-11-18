@@ -115,6 +115,7 @@ export const legalLinks = [
   { label: 'Terms of Service', to: '/legal/terms' },
   { label: 'Cookie Policy', to: '/legal/cookies' },
   { label: 'Disclosures', to: '/legal/disclosures' },
+  { label: 'All Policies', to: '/legal' },
 ]
 
 export const footerDisclosure =

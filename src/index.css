@@ -39,6 +39,12 @@
     backdrop-filter: blur(18px) saturate(140%);
     -webkit-backdrop-filter: blur(18px) saturate(140%);
   }
+  .nav-solid {
+    background: linear-gradient(160deg, rgba(22,23,27,0.94), rgba(10,10,12,0.94));
+    border: 1px solid rgba(232,231,228,0.09);
+    backdrop-filter: blur(18px) saturate(140%);
+    -webkit-backdrop-filter: blur(18px) saturate(140%);
+  }
   .hairline { @apply h-px w-full; background: linear-gradient(90deg, transparent, rgba(232,231,228,0.18), transparent); }
   .eyebrow { @apply font-display text-[10px] uppercase tracking-wide2 text-silver; }
   .btn-primary {

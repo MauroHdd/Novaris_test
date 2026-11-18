@@ -4,20 +4,21 @@ import { IntroSequence } from './components/layout/IntroSequence'
 import { Navbar } from './components/layout/Navbar'
 import { ScrollToTop } from './components/layout/ScrollToTop'
 import ComingSoon from './pages/ComingSoon'
+import AboutPage from './pages/AboutPage'
+import ContactPage from './pages/ContactPage'
 import HomePage from './pages/home/HomePage'
+import LegalPage, { LegalIndex } from './pages/LegalPage'
+import ServicesPage from './pages/ServicesPage'
+import ThankYouPage from './pages/ThankYouPage'
 
 // In-memory routing is used only for the single-file preview build (VITE_PREVIEW=1);
 // production uses clean URLs (see vercel.json for the SPA rewrite).
 const Router = import.meta.env.VITE_PREVIEW ? MemoryRouter : BrowserRouter
 
 const later: [string, string, string][] = [
-  ['/about', 'About Us', 'Stage 2 · Public website'],
-  ['/services', 'Services', 'Stage 2 · Public website'],
   ['/careers', 'Your Next Opportunity Starts Here.', 'Stage 3 · Recruiting portal'],
   ['/partnerships', 'Partner With NOVARIS', 'Stage 8 · Partnership portal'],
-  ['/contact', 'Contact', 'Stage 2 · Public website'],
   ['/academy/*', 'NOVARIS Academy', 'Stage 4–5 · Academy'],
-  ['/legal/*', 'Legal', 'Stage 2 · Placeholders'],
 ]
 
 export default function App() {
@@ -29,6 +30,12 @@ export default function App() {
       <main>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/contact/thank-you" element={<ThankYouPage />} />
+          <Route path="/legal" element={<LegalIndex />} />
+          <Route path="/legal/:slug" element={<LegalPage />} />
           {later.map(([path, title, stage]) => (
             <Route key={path} path={path} element={<ComingSoon title={title} stage={stage} />} />
           ))}
